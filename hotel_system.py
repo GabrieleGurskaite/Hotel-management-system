@@ -51,10 +51,18 @@ class Room(ABC):
             f"Room {self.number} | Type: {self.room_type()} | "
             f"Base price: {self.price:.2f} EUR | Status: {status}"
         )
+        
 class StandardRoom(Room):
     def calculate_price(self, nights):
         return self.price * nights
 
     def room_type(self):
         return "Standard"
+        
+class DeluxeRoom(Room):
+    def calculate_price(self, nights):
+        return self.price * 1.3 * nights
+
+    def room_type(self):
+        return "Deluxe"
         
