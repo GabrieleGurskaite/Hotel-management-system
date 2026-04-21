@@ -13,3 +13,8 @@ class Guest:
         self.phone = phone
         self.guest_id = guest_id
         self.email = email.strip()
+    def __str__(self):
+        return (
+            f"ID: {self.guest_id} | {self.name} {self.surname} | "
+            f"Phone: {self.phone} | Email: {self.email}"
+        )
