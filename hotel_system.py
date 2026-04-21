@@ -8,3 +8,8 @@ class Guest:
             raise ValueError("Phone must be in format +370XXXXXXXX.")
         if not re.fullmatch(r"[^@]+@[^@]+\.[^@]+", email):
             raise ValueError("Invalid email format.")
+        self.name = name.strip()
+        self.surname = surname.strip()
+        self.phone = phone
+        self.guest_id = guest_id
+        self.email = email.strip()
