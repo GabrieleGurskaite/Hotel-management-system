@@ -16,5 +16,14 @@ class Guest:
     def __str__(self):
         return (
             f"ID: {self.guest_id} | {self.name} {self.surname} | "
-            f"Phone: {self.phone} | Email: {self.email}"
+         f"Phone: {self.phone} | Email: {self.email}"
         )
+class Room(ABC):
+    def __init__(self, number, price):
+        if number <= 0:
+            raise ValueError("Room number must be positive.")
+        if price < 0:
+            raise ValueError("Price cannot be negative.")
+        self.number = number
+        self.price = price
+        self.available = True
