@@ -138,5 +138,12 @@ class Reservation:
         if self.checked_in:
             return "Checked-in"
         return "Reserved"
+        
+    def __str__(self):
+        return (
+            f"Reservation #{self.reservation_id} | Guest: {self.guest.name} {self.guest.surname} | "
+            f"Room: {self.room.number} ({self.room.room_type()}) | Nights: {self.nights} | "
+            f"Total: {self.total():.2f} EUR | Status: {self.status()}"
+        )
 
         
