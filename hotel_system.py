@@ -165,5 +165,18 @@ class Hotel:
         if any(existing.guest_id == guest.guest_id for existing in self.guests):
             raise ValueError("Guest with this ID already exists.")
         self.guests.append(guest)
+        
+    def get_free_rooms(self):
+        return [room for room in self.rooms if room.available]
+
+    def find_guest(self, guest_id):
+        return next((g for g in self.guests if g.guest_id == guest_id), None)
+
+    def find_room(self, room_number):
+        return next((r for r in self.rooms if r.number == room_number), None)
+
+    def find_reservation(self, reservation_id):
+        return next((r for r in self.reservations if r.reservation_id == reservation_id), None)
+
 
         
