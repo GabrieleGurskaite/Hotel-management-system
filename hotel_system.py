@@ -8,17 +8,20 @@ class Guest:
             raise ValueError("Phone must be in format +370XXXXXXXX.")
         if not re.fullmatch(r"[^@]+@[^@]+\.[^@]+", email):
             raise ValueError("Invalid email format.")
+            
         self.name = name.strip()
         self.surname = surname.strip()
         self.phone = phone
         self.guest_id = guest_id
         self.email = email.strip()
+        
     def __str__(self):
         return (
             f"ID: {self.guest_id} | {self.name} {self.surname} | "
          f"Phone: {self.phone} | Email: {self.email}"
         )
-        
+
+
 class Room(ABC):
     def __init__(self, number, price):
         if number <= 0:
@@ -52,12 +55,14 @@ class Room(ABC):
             f"Base price: {self.price:.2f} EUR | Status: {status}"
         )
         
+        
 class StandardRoom(Room):
     def calculate_price(self, nights):
         return self.price * nights
 
     def room_type(self):
         return "Standard"
+        
         
 class DeluxeRoom(Room):
     def calculate_price(self, nights):
@@ -66,12 +71,14 @@ class DeluxeRoom(Room):
     def room_type(self):
         return "Deluxe"
         
+        
 class SuiteRoom(Room):
     def calculate_price(self, nights):
         return self.price * 1.6 * nights
 
     def room_type(self):
         return "Suite"
+        
         
 class RoomFactory:
     @staticmethod
@@ -102,5 +109,15 @@ class Reservation:
         
     def total(self):
         return self.room.calculate_price(self.nights)
+        
+    def check_in(self):
+        if self.is_cancelled:
+            raise ValueError("Cannot check in cancelled reservation.")
+        if self.checked_in:
+            raise ValueError("Guest already checked in.")
+        if self.checked_out:
+            raise ValueError("Guest already checked out.")
+        self.room.book()
+        self.checked_in = True
 
         
