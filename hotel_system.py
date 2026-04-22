@@ -155,5 +155,15 @@ class Hotel:
         self.rooms = []
         self.guests = []
         self.reservations = []
+        
+    def add_room(self, room):
+        if any(existing.number == room.number for existing in self.rooms):
+            raise ValueError("Room with this number already exists.")
+        self.rooms.append(room)
+        
+    def add_guest(self, guest):
+        if any(existing.guest_id == guest.guest_id for existing in self.guests):
+            raise ValueError("Guest with this ID already exists.")
+        self.guests.append(guest)
 
         
