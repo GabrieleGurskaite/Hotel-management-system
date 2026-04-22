@@ -146,4 +146,14 @@ class Reservation:
             f"Total: {self.total():.2f} EUR | Status: {self.status()}"
         )
 
+
+class Hotel:
+    def __init__(self, name):
+        if not name.strip():
+            raise ValueError("Hotel name cannot be empty.")
+        self.name = name.strip()
+        self.rooms = []
+        self.guests = []
+        self.reservations = []
+
         
