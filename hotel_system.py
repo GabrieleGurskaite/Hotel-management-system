@@ -177,6 +177,20 @@ class Hotel:
 
     def find_reservation(self, reservation_id):
         return next((r for r in self.reservations if r.reservation_id == reservation_id), None)
+        
+    def create_reservation(self, guest_id, room_number, nights):
+        guest = self.find_guest(guest_id)
+        room = self.find_room(room_number)
+        if guest is None:
+            raise ValueError("Guest not found.")
+        if room is None:
+            raise ValueError("Room not found.")
+        if not room.available:
+            raise ValueError("Room is not available.")
+
+        reservation = Reservation(len(self.reservations) + 1, guest, room, nights)
+        self.reservations.append(reservation)
+        return reservation
 
 
         
