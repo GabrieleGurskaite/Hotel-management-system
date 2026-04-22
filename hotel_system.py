@@ -119,5 +119,15 @@ class Reservation:
             raise ValueError("Guest already checked out.")
         self.room.book()
         self.checked_in = True
+        
+    def check_out(self):
+        if self.is_cancelled:
+            raise ValueError("Cannot check out cancelled reservation.")
+        if not self.checked_in:
+            raise ValueError("Guest has not checked in yet.")
+        if self.checked_out:
+            raise ValueError("Guest already checked out.")
+        self.room.release()
+        self.checked_out = True
 
         
