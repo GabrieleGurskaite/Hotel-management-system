@@ -306,4 +306,17 @@ class FileManager:
                 hotel.reservations.append(reservation)
 
 
+def add_room_ui(hotel):
+    try:
+        room_type = input("Enter room type (standard/deluxe/suite): ").strip().lower()
+        number = int(input("Room number: "))
+        price = float(input("Base price: "))
+        room = RoomFactory.create(room_type, number, price)
+        hotel.add_room(room)
+        print("Room added successfully.")
+    except Exception as error:
+        print("Error:", error)
+        
+
+
         
