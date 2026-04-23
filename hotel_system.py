@@ -388,6 +388,28 @@ def show_all_rooms_ui(hotel):
         return
     for room in hotel.rooms:
         print(room)
+
+
+def show_guests_ui(hotel):
+    print("\n=== GUESTS ===")
+    if not hotel.guests:
+        print("No guests found.")
+        return
+    for guest in hotel.guests:
+        print(guest)
+
+
+def show_reservations_ui(hotel):
+    print("\n=== RESERVATIONS ===")
+    if not hotel.reservations:
+        print("No reservations found.")
+        return
+    for reservation in hotel.reservations:
+        print(reservation)
+
+
+def show_total_revenue_ui(hotel):
+    print(f"\nTotal revenue: {hotel.total_revenue():.2f} EUR")
         
 
 
