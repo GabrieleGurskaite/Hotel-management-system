@@ -262,6 +262,48 @@ class FileManager:
 
         with open(filename, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4)
+            
+    @staticmethod
+    def load_data(filename, hotel):
+        if not os.path.exists(filename):
+            return
+
+        with open(filename, "r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        hotel.rooms.clear()
+        hotel.guests.clear()
+        hotel.reservations.clear()
+
+        for raw_room in data.get("rooms", []):
+            room = RoomFactory.create(raw_room["type"], raw_room["number"], raw_room["price"])
+            room.available = raw_room["available"]
+            hotel.rooms.append(room)
+
+        for raw_guest in data.get("guests", []):
+            guest = Guest(
+                raw_guest["name"],
+                raw_guest["surname"],
+                raw_guest["phone"],
+                raw_guest["guest_id"],
+                raw_guest["email"]
+            )
+            hotel.guests.append(guest)
+
+        for raw_reservation in data.get("reservations", []):
+            guest = hotel.find_guest(raw_reservation["guest_id"])
+            room = hotel.find_room(raw_reservation["room_number"])
+            if guest and room:
+                reservation = Reservation(
+                    raw_reservation["reservation_id"],
+                    guest,
+                    room,
+                    raw_reservation["nights"]
+                )
+                reservation.checked_in = raw_reservation["checked_in"]
+                reservation.checked_out = raw_reservation["checked_out"]
+                reservation.is_cancelled = raw_reservation["is_cancelled"]
+                hotel.reservations.append(reservation)
 
 
         
