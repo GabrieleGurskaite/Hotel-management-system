@@ -351,6 +351,24 @@ def cancel_reservation_ui(hotel):
         print("Reservation cancelled successfully.")
     except Exception as error:
         print("Error:", error)
+
+
+def check_in_ui(hotel):
+    try:
+        reservation_id = int(input("Reservation ID for check-in: "))
+        hotel.check_in_guest(reservation_id)
+        print("Check-in successful.")
+    except Exception as error:
+        print("Error:", error)
+
+
+def check_out_ui(hotel):
+    try:
+        reservation_id = int(input("Reservation ID for check-out: "))
+        hotel.check_out_guest(reservation_id)
+        print("Check-out successful.")
+    except Exception as error:
+        print("Error:", error)
         
 
 
