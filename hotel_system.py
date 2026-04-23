@@ -317,6 +317,20 @@ def add_room_ui(hotel):
     except Exception as error:
         print("Error:", error)
         
+        
+def add_guest_ui(hotel):
+    try:
+        name = input("Name: ")
+        surname = input("Surname: ")
+        phone = input("Phone (+370XXXXXXXX): ")
+        guest_id = int(input("Guest ID: "))
+        email = input("Email: ")
+        guest = Guest(name, surname, phone, guest_id, email)
+        hotel.add_guest(guest)
+        print("Guest added successfully.")
+    except Exception as error:
+        print("Error:", error)
+        
 
 
         
