@@ -191,6 +191,31 @@ class Hotel:
         reservation = Reservation(len(self.reservations) + 1, guest, room, nights)
         self.reservations.append(reservation)
         return reservation
+        
+    def cancel_reservation(self, reservation_id):
+        reservation = self.find_reservation(reservation_id)
+        if reservation is None:
+            raise ValueError("Reservation not found.")
+        reservation.cancel()
+
+    def check_in_guest(self, reservation_id):
+        reservation = self.find_reservation(reservation_id)
+        if reservation is None:
+            raise ValueError("Reservation not found.")
+        reservation.check_in()
+
+    def check_out_guest(self, reservation_id):
+        reservation = self.find_reservation(reservation_id)
+        if reservation is None:
+            raise ValueError("Reservation not found.")
+        reservation.check_out()
+        
+    def total_revenue(self):
+        return sum(
+            reservation.total()
+            for reservation in self.reservations
+            if reservation.checked_out and not reservation.is_cancelled
+        )
 
 
         
