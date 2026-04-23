@@ -130,6 +130,15 @@ class Reservation:
         self.room.release()
         self.checked_out = True
         
+    def cancel(self):
+        if self.checked_out:
+            raise ValueError("Cannot cancel checked-out reservation.")
+        if self.is_cancelled:
+            raise ValueError("Reservation already cancelled.")
+        if self.checked_in and not self.checked_out:
+            self.room.release()
+        self.is_cancelled = True
+        
     def status(self):
         if self.is_cancelled:
             return "Cancelled"
@@ -216,6 +225,43 @@ class Hotel:
             for reservation in self.reservations
             if reservation.checked_out and not reservation.is_cancelled
         )
+
+    
+class FileManager:
+    @staticmethod
+    def save_data(filename, hotel):
+        data = {"rooms": [], "guests": [], "reservations": []}
+
+        for room in hotel.rooms:
+            data["rooms"].append({
+                "number": room.number,
+                "price": room.price,
+                "available": room.available,
+                "type": room.room_type().lower()
+            })
+
+        for guest in hotel.guests:
+            data["guests"].append({
+                "name": guest.name,
+                "surname": guest.surname,
+                "phone": guest.phone,
+                "guest_id": guest.guest_id,
+                "email": guest.email
+            })
+
+        for reservation in hotel.reservations:
+            data["reservations"].append({
+                "reservation_id": reservation.reservation_id,
+                "guest_id": reservation.guest.guest_id,
+                "room_number": reservation.room.number,
+                "nights": reservation.nights,
+                "checked_in": reservation.checked_in,
+                "checked_out": reservation.checked_out,
+                "is_cancelled": reservation.is_cancelled
+            })
+
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4)
 
 
         
