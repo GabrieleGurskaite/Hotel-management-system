@@ -369,6 +369,25 @@ def check_out_ui(hotel):
         print("Check-out successful.")
     except Exception as error:
         print("Error:", error)
+
+    
+    def show_available_rooms_ui(hotel):
+    print("\n=== AVAILABLE ROOMS ===")
+    rooms = hotel.get_free_rooms()
+    if not rooms:
+        print("No available rooms.")
+        return
+    for room in rooms:
+        print(room)
+
+
+def show_all_rooms_ui(hotel):
+    print("\n=== ALL ROOMS ===")
+    if not hotel.rooms:
+        print("No rooms found.")
+        return
+    for room in hotel.rooms:
+        print(room)
         
 
 
