@@ -330,6 +330,27 @@ def add_guest_ui(hotel):
         print("Guest added successfully.")
     except Exception as error:
         print("Error:", error)
+
+
+def create_reservation_ui(hotel):
+    try:
+        guest_id = int(input("Guest ID: "))
+        room_number = int(input("Room number: "))
+        nights = int(input("Nights: "))
+        reservation = hotel.create_reservation(guest_id, room_number, nights)
+        print("Reservation created successfully.")
+        print(reservation)
+    except Exception as error:
+        print("Error:", error)
+
+
+def cancel_reservation_ui(hotel):
+    try:
+        reservation_id = int(input("Reservation ID to cancel: "))
+        hotel.cancel_reservation(reservation_id)
+        print("Reservation cancelled successfully.")
+    except Exception as error:
+        print("Error:", error)
         
 
 
