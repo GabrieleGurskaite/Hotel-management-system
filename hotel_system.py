@@ -410,6 +410,73 @@ def show_reservations_ui(hotel):
 
 def show_total_revenue_ui(hotel):
     print(f"\nTotal revenue: {hotel.total_revenue():.2f} EUR")
+
+
+def main():
+    hotel = Hotel("Hotel Management System")
+    data_file = "hotel_data.json"
+
+    if os.path.exists(data_file):
+        try:
+            FileManager.load_data(data_file, hotel)
+        except Exception:
+            pass
+
+    if not hotel.rooms:
+        hotel.add_room(RoomFactory.create("standard", 101, 50))
+        hotel.add_room(RoomFactory.create("deluxe", 201, 80))
+        hotel.add_room(RoomFactory.create("suite", 301, 120))
+
+    while True:
+        print("\n=== HOTEL MANAGEMENT SYSTEM ===")
+        print("1. Show all rooms")
+        print("2. Show available rooms")
+        print("3. Show guests")
+        print("4. Show reservations")
+        print("5. Add room")
+        print("6. Add guest")
+        print("7. Create reservation")
+        print("8. Check in guest")
+        print("9. Check out guest")
+        print("10. Cancel reservation")
+        print("11. Show total revenue")
+        print("12. Save data and exit")
+
+        choice = input("Choose option: ").strip()
+
+        if choice == "1":
+            show_all_rooms_ui(hotel)
+        elif choice == "2":
+            show_available_rooms_ui(hotel)
+        elif choice == "3":
+            show_guests_ui(hotel)
+        elif choice == "4":
+            show_reservations_ui(hotel)
+        elif choice == "5":
+            add_room_ui(hotel)
+        elif choice == "6":
+            add_guest_ui(hotel)
+        elif choice == "7":
+            create_reservation_ui(hotel)
+        elif choice == "8":
+            check_in_ui(hotel)
+        elif choice == "9":
+            check_out_ui(hotel)
+        elif choice == "10":
+            cancel_reservation_ui(hotel)
+        elif choice == "11":
+            show_total_revenue_ui(hotel)
+        elif choice == "12":
+            FileManager.save_data(data_file, hotel)
+            print("Data saved successfully.")
+            print("Program finished successfully.")
+            break
+        else:
+            print("Invalid option.")
+
+
+if __name__ == "__main__":
+    main()
         
 
 
