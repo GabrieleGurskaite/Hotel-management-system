@@ -24,7 +24,7 @@ class Guest:
     def __str__(self):
         return (
             f"ID: {self.guest_id} | {self.name} {self.surname} | "
-         f"Phone: {self.phone} | Email: {self.email}"
+            f"Phone: {self.phone} | Email: {self.email}"
         )
 
 
