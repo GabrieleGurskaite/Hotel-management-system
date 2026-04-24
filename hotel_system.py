@@ -97,7 +97,8 @@ class RoomFactory:
         if room_type == "suite":
             return SuiteRoom(number, price)
         raise ValueError("Invalid room type. Use standard, deluxe, or suite.")
-        
+
+
 class Reservation:
     def __init__(self, reservation_id, guest, room, nights):
         if reservation_id <= 0:
