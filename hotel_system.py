@@ -389,7 +389,7 @@ def check_out_ui(hotel):
         print("Error:", error)
 
     
-    def show_available_rooms_ui(hotel):
+def show_available_rooms_ui(hotel):
     print("\n=== AVAILABLE ROOMS ===")
     rooms = hotel.get_free_rooms()
     if not rooms:
