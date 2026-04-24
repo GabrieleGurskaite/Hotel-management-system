@@ -167,9 +167,21 @@ class Hotel:
         if not name.strip():
             raise ValueError("Hotel name cannot be empty.")
         self.name = name.strip()
-        self.rooms = []
-        self.guests = []
-        self.reservations = []
+        self._rooms = []
+        self._guests = []
+        self._reservations = []
+
+    @property
+    def rooms(self):
+        return self._rooms
+
+    @property
+    def guests(self):
+        return self._guests
+
+    @property
+    def reservations(self):
+        return self._reservations
         
     def add_room(self, room):
         if any(existing.number == room.number for existing in self.rooms):
