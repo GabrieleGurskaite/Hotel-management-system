@@ -124,7 +124,6 @@ class Reservation:
             raise ValueError("Guest already checked in.")
         if self.checked_out:
             raise ValueError("Guest already checked out.")
-        self.room.book()
         self.checked_in = True
         
     def check_out(self):
@@ -209,6 +208,7 @@ class Hotel:
     def create_reservation(self, guest_id, room_number, nights):
         guest = self.find_guest(guest_id)
         room = self.find_room(room_number)
+        
         if guest is None:
             raise ValueError("Guest not found.")
         if room is None:
@@ -217,6 +217,7 @@ class Hotel:
             raise ValueError("Room is not available.")
 
         reservation = Reservation(len(self.reservations) + 1, guest, room, nights)
+        room.book()
         self.reservations.append(reservation)
         return reservation
         
