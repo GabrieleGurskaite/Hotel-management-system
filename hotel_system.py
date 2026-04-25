@@ -439,8 +439,8 @@ def main():
     if os.path.exists(data_file):
         try:
             FileManager.load_data(data_file, hotel)
-        except Exception:
-            pass
+        except Exception as error:
+            print("Could not load saved data:", error)
 
     if not hotel.rooms:
         hotel.add_room(RoomFactory.create("standard", 101, 50))
