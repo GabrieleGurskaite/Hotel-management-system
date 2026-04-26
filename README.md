@@ -65,7 +65,7 @@ Toks atsakomybių atskyrimas padaro kodą aiškesnį, lengviau skaitomą, lengvi
 
 Šiame projekte panaudoti visi keturi pagrindiniai objektinio programavimo principai:
 
-- inkapsuliacija;
+- enkapsuliacija;
 - paveldėjimas;
 - abstrakcija;
 - polimorfizmas.
