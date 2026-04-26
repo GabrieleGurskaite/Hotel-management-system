@@ -455,26 +455,7 @@ Testavimas yra svarbus, nes padeda įsitikinti, kad pakeitus kodą pagrindinės 
 
 ## 11. Kodo stilius
 
-Programa parašyta Python kalba ir laikosi pagrindinių PEP8 stiliaus principų.
-
-Kode naudojami:
-
-- aiškūs klasių pavadinimai;
-- aiškūs metodų pavadinimai;
-- `snake_case` stiliaus funkcijų ir kintamųjų pavadinimai;
-- `CamelCase` stiliaus klasių pavadinimai;
-- išimtys `ValueError` klaidų valdymui;
-- aiškiai atskirtos klasės ir funkcijos.
-
-Pavyzdžiai:
-
-- `RoomFactory`;
-- `StandardRoom`;
-- `create_reservation`;
-- `check_in_guest`;
-- `total_revenue`.
-
-Toks stilius padaro kodą lengviau suprantamą ir prižiūrimą.
+Programa parašyta Python kalba ir laikosi pagrindinių PEP8 stiliaus principų.Toks stilius padaro kodą lengviau suprantamą ir prižiūrimą.
 
 ---
 
@@ -510,7 +491,7 @@ Galutinis rezultatas atitinka kursinio darbo reikalavimus: programa naudoja OOP 
 
 ---
 
-## 14. Galimos plėtros kryptys
+## 14. Galimi patobulinimai
 
 Galimi mano programos patobulinimai:
 
