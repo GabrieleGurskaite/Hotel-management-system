@@ -449,8 +449,6 @@ def test_total_revenue_after_checkout(self):
 
 Šis testas patikrina, ar viešbučio pajamos skaičiuojamos teisingai po sėkmingo check-in ir check-out proceso.
 
-Testavimas yra svarbus, nes padeda įsitikinti, kad pakeitus kodą pagrindinės funkcijos vis dar veikia teisingai.
-
 ---
 
 ## 11. Kodo stilius
